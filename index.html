@@ -1,290 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>صفحة ويب بسيطة</title>
-  <style>
-    :root{
-      --bg:#0b1220;
-      --card:#121b2e;
-      --text:#eef2ff;
-      --muted:#a9b4d0;
-      --accent:#6ee7ff;
-      --accent2:#a78bfa;
-      --border:rgba(255,255,255,.08);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(110,231,255,.18), transparent 60%),
-                  radial-gradient(900px 500px at 100% 20%, rgba(167,139,250,.16), transparent 60%),
-                  var(--bg);
-      color:var(--text);
-      line-height:1.7;
-    }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1100px; margin:auto; padding:24px}
-    header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.65);
-      border-bottom:1px solid var(--border);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:14px 24px;
-      max-width:1100px; margin:auto;
-    }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:800}
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 12px 30px rgba(110,231,255,.18);
-    }
-    .links{display:flex; gap:14px; flex-wrap:wrap}
-    .chip{
-      padding:8px 12px; border-radius:999px;
-      border:1px solid var(--border);
-      color:var(--muted);
-      transition:.2s ease;
-    }
-    .chip:hover{border-color:rgba(110,231,255,.35); color:var(--text)}
-    .hero{
-      padding:46px 0 18px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; padding-top:28px;}
-    }
-    .card{
-      background: linear-gradient(180deg, rgba(18,27,46,.95), rgba(18,27,46,.78));
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:22px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
-    .title{
-      font-size: clamp(28px, 4vw, 44px);
-      margin:0 0 10px;
-      letter-spacing:.2px;
-    }
-    .subtitle{margin:0; color:var(--muted)}
-    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
-    button{
-      border:0; cursor:pointer;
-      padding:12px 16px;
-      border-radius:14px;
-      font-weight:700;
-      transition:.2s ease;
-    }
-    .btn-primary{
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color:#08101e;
-      box-shadow: 0 14px 34px rgba(110,231,255,.18);
-    }
-    .btn-primary:hover{transform: translateY(-1px); filter:saturate(1.1)}
-    .btn-ghost{
-      background: transparent;
-      color:var(--text);
-      border:1px solid var(--border);
-    }
-    .btn-ghost:hover{border-color:rgba(167,139,250,.35)}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      margin-top:16px;
-    }
-    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
-    .feature{
-      padding:16px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.02);
-    }
-    .feature h3{margin:0 0 6px; font-size:18px}
-    .feature p{margin:0; color:var(--muted)}
-    .section{padding:18px 0}
-    .section h2{margin:0 0 8px; font-size:24px}
-    .section p{margin:0; color:var(--muted)}
-    .form{
-      display:grid; gap:10px; margin-top:12px;
-    }
-    input, textarea{
-      width:100%;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.15);
-      color: var(--text);
-      outline:none;
-    }
-    input:focus, textarea:focus{
-      border-color: rgba(110,231,255,.45);
-      box-shadow: 0 0 0 4px rgba(110,231,255,.08);
-    }
-    footer{
-      padding:22px 0 40px;
-      color:var(--muted);
-      text-align:center;
-    }
-    .toast{
-      position: fixed;
-      left: 18px;
-      bottom: 18px;
-      background: rgba(18,27,46,.92);
-      border:1px solid var(--border);
-      color: var(--text);
-      padding: 12px 14px;
-      border-radius: 14px;
-      box-shadow: 0 16px 50px rgba(0,0,0,.45);
-      opacity:0;
-      transform: translateY(10px);
-      pointer-events:none;
-      transition:.25s ease;
-      max-width:min(520px, calc(100vw - 36px));
-    }
-    .toast.show{opacity:1; transform: translateY(0)}
-    .kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: .92em;
-      padding: 2px 8px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: rgba(255,255,255,.03);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي الشخصي | Mohannad</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* هذا السطر يجعل الصورة دائرية */
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            object-fit: cover;
+            margin-top: -80px; /* لرفع الصورة للأعلى قليلاً */
+            background-color: #ddd;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05); /* تكبير الزر قليلاً عند المرور عليه */
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <nav class="nav">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <span>عالم البرمجة 🚀</span>
+    <div class="container">
+        <img src="profile.jpg" alt="صورتي الشخصية" class="profile-img">
+        
+        <h1>مرحباً، أنا مهند 👋</h1>
+        <p>
+            مطور ويب طموح، أتعلم حالياً كيفية بناء المواقع وإدارتها باستخدام Git & GitHub.
+            <br>
+            أحب تحويل الأفكار إلى واقع برمجية.
+        </p>
+
+        <a href="https://github.com/Mohannad-Q" class="btn">تواصل معي على GitHub</a>
     </div>
-    <div class="links">
-      <a class="chip" href="#features">المميزات</a>
-      <a class="chip" href="#about">عن الصفحة</a>
-      <a class="chip" href="#contact">تواصل</a>
-    </div>
-  </nav>
-</header>
-
-<main class="container">
-  <section class="hero">
-    <div class="card">
-      <h1 class="title">صفحة ويب أنيقة وبسيطة ✨</h1>
-      <p class="subtitle">
-        قالب جاهز: تصميم حديث، أقسام منظمة، وزر ينقلك للمحتوى + نموذج تواصل.
-        جرّب الضغط على <span class="kbd">ابدأ</span>.
-      </p>
-
-      <div class="actions">
-        <button class="btn-primary" id="startBtn">ابدأ</button>
-        <button class="btn-ghost" id="themeBtn">تبديل الخلفية</button>
-      </div>
-
-      <div class="grid" id="features">
-        <div class="feature">
-          <h3>سريع وبسيط</h3>
-          <p>ملف واحد فقط (HTML) يشمل كل شيء.</p>
-        </div>
-        <div class="feature">
-          <h3>متجاوب</h3>
-          <p>يعمل بشكل ممتاز على الجوال والكمبيوتر.</p>
-        </div>
-        <div class="feature">
-          <h3>جاهز للتعديل</h3>
-          <p>غيّر النصوص والألوان بسهولة.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" id="about">
-      <h2 style="margin:0 0 10px;">عن الصفحة</h2>
-      <p class="subtitle" style="margin-bottom:14px;">
-        هذا مثال لواجهة Landing Page بسيطة. يمكنك إضافة صور، خدمات، أو أسعار.
-      </p>
-
-      <div class="feature">
-        <h3>فكرة سريعة</h3>
-        <p>اربط الأزرار بالأقسام باستخدام الروابط مثل: <span class="kbd">#contact</span></p>
-      </div>
-
-      <div class="feature" style="margin-top:12px;">
-        <h3>نصيحة</h3>
-        <p>لو تبغى نسخة متعددة الصفحات أو Bootstrap/Tailwind قلّي.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="card">
-      <h2>تواصل معنا</h2>
-      <p>اكتب بياناتك، وسيظهر تنبيه (بدون إرسال فعلي).</p>
-
-      <form class="form" id="contactForm">
-        <input type="text" name="name" placeholder="الاسم" required />
-        <input type="email" name="email" placeholder="البريد الإلكتروني" required />
-        <textarea name="message" rows="4" placeholder="رسالتك..." required></textarea>
-        <button class="btn-primary" type="submit">إرسال</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="year"></span> — قالب صفحة ويب بسيطة.
-  </footer>
-</main>
-
-<div class="toast" id="toast"></div>
-
-<script>
-  const startBtn = document.getElementById('startBtn');
-  const themeBtn = document.getElementById('themeBtn');
-  const features = document.getElementById('features');
-  const toast = document.getElementById('toast');
-  const year = document.getElementById('year');
-  const form = document.getElementById('contactForm');
-
-  year.textContent = new Date().getFullYear();
-
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => toast.classList.remove('show'), 2600);
-  }
-
-  startBtn.addEventListener('click', () => {
-    features.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    showToast('تم! نزلناك لقسم المميزات 👇');
-  });
-
-  let alt = false;
-  themeBtn.addEventListener('click', () => {
-    alt = !alt;
-    document.documentElement.style.setProperty('--bg', alt ? '#071a14' : '#0b1220');
-    document.documentElement.style.setProperty('--accent', alt ? '#5cffb6' : '#6ee7ff');
-    document.documentElement.style.setProperty('--accent2', alt ? '#f7b84b' : '#a78bfa');
-    showToast('تم تبديل الألوان 🎨');
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const name = data.get('name');
-    showToast(`وصلت رسالتك يا ${name} ✅ (تجربة فقط)`);
-    form.reset();
-  });
-</script>
 
 </body>
 </html>
