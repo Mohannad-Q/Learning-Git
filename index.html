@@ -23,37 +23,63 @@
         .profile-img {
             width: 150px;
             height: 150px;
-            border-radius: 50%; /* هذا السطر يجعل الصورة دائرية */
+            border-radius: 50%;
             border: 5px solid white;
             box-shadow: 0 0 20px rgba(0,0,0,0.15);
             object-fit: cover;
-            margin-top: -80px; /* لرفع الصورة للأعلى قليلاً */
+            margin-top: -80px;
             background-color: #ddd;
         }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        p { font-size: 1.1rem; color: #666; line-height: 1.6; }
+        
+        /* تنسيق المهارات */
+        .skills-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
-        p {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.6;
+        .skill-tag {
+            background-color: #e1ecf4;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #dae5f0;
+        }
+
+        /* تنسيق الأزرار */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* مسافة بين الأزرار */
+            margin-top: 20px;
         }
         .btn {
             display: inline-block;
-            background-color: #3498db;
-            color: white;
             padding: 12px 30px;
             text-decoration: none;
             border-radius: 30px;
-            margin-top: 20px;
             font-weight: bold;
             transition: 0.3s;
         }
-        .btn:hover {
-            background-color: #2980b9;
-            transform: scale(1.05); /* تكبير الزر قليلاً عند المرور عليه */
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
         }
+        .btn-primary:hover { background-color: #2980b9; transform: scale(1.05); }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+        .btn-secondary:hover { background-color: #e1ecf4; transform: scale(1.05); }
+
     </style>
 </head>
 <body>
@@ -63,12 +89,24 @@
         
         <h1>مرحباً، أنا مهند 👋</h1>
         <p>
-            مطور ويب طموح، أتعلم حالياً كيفية بناء المواقع وإدارتها باستخدام Git & GitHub.
+            مطور ويب طموح، وشغوف بمجال UI/UX وقيادة الفرق.
             <br>
-            أحب تحويل الأفكار إلى واقع برمجية.
+            أعمل حالياً على تطوير مهاراتي في Git & GitHub وبناء مشاريع إبداعية.
         </p>
 
-        <a href="https://github.com/Mohannad-Q" class="btn">تواصل معي على GitHub</a>
+        <div class="skills-container">
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Team Leadership</span>
+            <span class="skill-tag">Canva & Figma</span>
+            <span class="skill-tag">Social Media</span>
+        </div>
+
+        <div class="buttons-container">
+            <a href="cv.pdf" class="btn btn-primary" target="_blank">تحميل السيرة الذاتية 📥</a>
+            
+            <a href="https://github.com/Mohannad-Q" class="btn btn-secondary">GitHub بروفايل</a>
+        </div>
     </div>
 
 </body>
