@@ -1,112 +1,202 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقعي الشخصي | Mohannad</title>
+    <title>Mohannad Qasem | Portfolio</title>
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e293b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            text-align: center;
-            padding: 50px;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--secondary-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            background-color: white;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        /* Header Section */
+        header {
+            text-align: center;
+            background-color: var(--card-bg);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.15);
             object-fit: cover;
-            margin-top: -80px;
-            background-color: #ddd;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 15px;
         }
-        h1 { color: #2c3e50; margin-bottom: 10px; }
-        p { font-size: 1.1rem; color: #666; line-height: 1.6; }
-        
-        /* تنسيق المهارات */
-        .skills-container {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
+        h1 { margin: 10px 0 5px; color: var(--secondary-color); }
+        .subtitle { color: #64748b; font-weight: 500; font-size: 1.1rem; }
+        .contact-info { margin-top: 15px; font-size: 0.9rem; }
+        .contact-info a { color: var(--primary-color); text-decoration: none; margin: 0 10px; }
+
+        /* Sections General */
+        section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+        h2 { border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; display: inline-block; margin-top: 0; }
+
+        /* Skills Tags */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-tag {
-            background-color: #e1ecf4;
-            color: #2c3e50;
-            padding: 8px 15px;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
-            font-weight: bold;
-            border: 1px solid #dae5f0;
+            font-weight: 600;
         }
 
-        /* تنسيق الأزرار */
-        .buttons-container {
+        /* Achievements List */
+        .achievement-item {
             display: flex;
-            justify-content: center;
-            gap: 15px; /* مسافة بين الأزرار */
-            margin-top: 20px;
+            align-items: center;
+            margin-bottom: 15px;
         }
+        .medal { font-size: 1.5rem; margin-right: 15px; }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .project-title { font-weight: bold; font-size: 1.1rem; color: var(--primary-color); }
+        
+        /* Buttons */
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-primary {
-            background-color: #3498db;
+            background-color: var(--primary-color);
             color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: bold;
         }
-        .btn-primary:hover { background-color: #2980b9; transform: scale(1.05); }
-        
-        .btn-secondary {
-            background-color: white;
-            color: #3498db;
-            border: 2px solid #3498db;
-        }
-        .btn-secondary:hover { background-color: #e1ecf4; transform: scale(1.05); }
-
+        .btn:hover { background-color: #1d4ed8; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img src="profile.jpg" alt="صورتي الشخصية" class="profile-img">
-        
-        <h1>مرحباً، أنا مهند 👋</h1>
-        <p>
-            مطور ويب طموح، وشغوف بمجال UI/UX وقيادة الفرق.
-            <br>
-            أعمل حالياً على تطوير مهاراتي في Git & GitHub وبناء مشاريع إبداعية.
-        </p>
-
-        <div class="skills-container">
-            <span class="skill-tag">Git & GitHub</span>
-            <span class="skill-tag">UI/UX Design</span>
-            <span class="skill-tag">Team Leadership</span>
-            <span class="skill-tag">Canva & Figma</span>
-            <span class="skill-tag">Social Media</span>
-        </div>
-
-        <div class="buttons-container">
-            <a href="cv.pdf" class="btn btn-primary" target="_blank">تحميل السيرة الذاتية 📥</a>
+        <header>
+            <img src="profile.jpg" alt="Mohannad Qasem" class="profile-img">
+            <h1>Mohannad Ashraf Qasem</h1>
+            <p class="subtitle">CS Student | Competitive Programmer | UI/UX Enthusiast</p>
             
-            <a href="https://github.com/Mohannad-Q" class="btn btn-secondary">GitHub بروفايل</a>
-        </div>
+            <div class="contact-info">
+                📍 Amman, Jordan | 
+                <a href="mailto:mohannadqasem1@gmail.com">Email Me</a> | 
+                <a href="https://github.com/Mohannad-Q">GitHub</a>
+            </div>
+
+            <a href="cv.pdf" class="btn" download>Download Full CV 📥</a>
+        </header>
+
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                A high-achieving Computer Science student and Competitive Programmer. 
+                I bridge the gap between UI/UX aesthetics and technical feasibility, creating developer-friendly designs based on a solid understanding of the SDLC. 
+                Proven leader with experience as a Social Media Team Leader, combining analytical problem-solving with creative strategic thinking.
+            </p>
+        </section>
+
+        <section>
+            <h2>🏆 Honors & Achievements</h2>
+            <div class="achievement-item">
+                <span class="medal">🥉</span>
+                <div>
+                    <strong>3rd Place - BAU-CPC 2025</strong><br>
+                    Al-Balqa Collegiate Programming Contest
+                </div>
+            </div>
+            <div class="achievement-item">
+                <span class="medal">💻</span>
+                <div>
+                    <strong>Participant - JCPC 2025</strong><br>
+                    Jordanian Collegiate Programming Contest
+                </div>
+            </div>
+            <div class="achievement-item">
+                <span class="medal">🏅</span>
+                <div>
+                    <strong>5th Place - BAU-CPC 2023</strong><br>
+                    Al-Balqa Collegiate Programming Contest
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🛠️ Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">C++ & Java</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL (MySQL/Server)</span>
+                <span class="skill-tag">UI/UX Design</span>
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Adobe Suite</span>
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">System Analysis</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>🚀 Selected Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-title">Najah (نجاة)</div>
+                    <p>Healthcare platform analysis & UI design. Created complex system models (DFD, ERD) and user-centric interfaces for chronic patients.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Wattersons Restaurant</div>
+                    <p>Full-featured E-commerce app design for an Asian seafood restaurant, managing the complete user journey.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Daleel (دليل)</div>
+                    <p>Smart Campus Guide app focusing on information architecture to assist university students.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">Jawk (جوّك)</div>
+                    <p>Localized Jordan-specific weather app with adaptive interface and Dark Mode support.</p>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
 </body>
