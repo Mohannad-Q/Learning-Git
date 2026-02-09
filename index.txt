@@ -1,3 +1,0 @@
-Hello Git
-Update from GitHub
-Testing the new branch
